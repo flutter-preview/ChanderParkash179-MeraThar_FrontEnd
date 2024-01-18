@@ -8,21 +8,21 @@ class Utils {
   static var login = 'Login';
   static var register = 'Register';
   static var forgotPassword = 'Forgot Password?';
-  static var error = 'ERROR';
   static var readMore = 'Read more...';
 
   static var loginViewSlogan = 'Welcome Back You\'ve been Missed!';
-  static var userNameHintText = 'Username';
+  static var emailHintText = 'Email';
   static var passwordHintText = 'Password';
-  static var securityQuestionText = 'Security Question';
+  static var firstNameText = 'First Name';
+  static var lastNameText = 'Last Name';
 
   static var notRegisterMsg = 'Don\'t have an Account';
   static var alreadyRegisterMsg = 'Already have an Account';
 
   static var registerViewSlogan = 'Welcome on your Onboarding!';
+  static var signInWithGoogle = 'Sign in with Google';
 
-  static var registerWarning = 'Invalid -or- Empty Credentials';
-  static var loginWarning = 'Invalid User -or- Invalid User Credentials';
+  static var deleteUserAccountMsg = 'Delete Your Account!';
 
   static var all = 'Users';
   static var add = 'Add';
@@ -39,9 +39,13 @@ class Utils {
   static var userAddedSuccess = 'User Added Successfully!';
   static var somethingWentWrong = 'Something went Wrong!';
 
-  static var OK = 'OK';
-  static var CANCEL = 'CANCEL';
-  static var SUCCESS = 'SUCCESS';
+  // PAGE NAMES
+  static var touristView = 'Tourist View';
+  static var visitingPointView = 'Location View';
+  static var hotelView = 'Hotel View';
+  static var restaurantsView = 'Restaurant View';
+  static var travelingView = 'Traveling View';
+  static var cultureView = 'Culture View';
 
   static var citiesPage = 'Cities Page';
   static var umerkot = 'Umerkot';
@@ -74,6 +78,8 @@ class Utils {
 
   // SIZES
 
+  static double size_00 = 00.0;
+  static double size_02 = 02.0;
   static double size_04 = 04.0;
   static double size_06 = 06.0;
   static double size_08 = 08.0;
@@ -94,6 +100,7 @@ class Utils {
   static double size_50 = 50.0;
   static double size_54 = 54.0;
   static double size_60 = 60.0;
+  static double size_70 = 70.0;
   static double size_80 = 80.0;
   static double size_100 = 100.0;
   static double size_200 = 200.0;
@@ -125,6 +132,43 @@ class Utils {
   static var mithi_icon_img = 'assets/images/mithi_btn_img.png';
   static var nagarparkar_icon_img = 'assets/images/nagarparkar_btn_img.png';
 
+  static var bg_img = 'assets/images/bg_img.jpg';
+
+  static var googleImg = 'assets/images/google.png';
+
+  static var maleGenderImage = 'assets/images/maleGenderImage.png';
+  static var femaleGenderImage = 'assets/images/femaleGenderImage.png';
+
   // HEADERS
   static var header = {'Content-Type': 'application/json'};
+
+  // CAPS USER WORDS
+  static var FIRSTNAME = 'FIRST NAME';
+  static var LASTNAME = 'LAST NAME';
+
+  static var USER_FIRSTNAME = 'FIRSTNAME';
+  static var USER_LASTNAME = 'LASTNAME';
+  static var USER_EMAIL = 'EMAIL';
+  static var USER_GENDER = 'GENDER';
+
+  // CAPS WORDS
+  static var OK = 'OK';
+  static var CANCEL = 'CANCEL';
+  static var SUCCESS = 'SUCCESS';
+  static var REGISTER = 'REGISTER';
+  static var LOGIN = 'LOGIN';
+  static var SOMETHING_WENT_WRONG = 'SOMETHING WENT WRONG';
+  static var DELETED = 'DELETE';
+  static var LOGOUT = 'LOGOUT';
+  static var GOOGLE = 'GOOGLE';
+  static var EMAIL = 'EMAIL';
+  static var KEY_LOGIN = 'KEY_LOGIN';
+  static var PROFILE = 'PROFILE';
+  static var HOME = 'HOME';
+
+  // GENDERS
+  static var GENDER = 'GENDER';
+  static var MALE = 'MALE';
+  static var FEMALE = 'FEMALE';
+  static var OTHER = 'OTHER';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:front_app/Model/TouristPointModel/TouristPoint.dart';
 import 'package:front_app/Service/TouristPointService.dart';
 import 'package:front_app/Utils/Utils.dart';
+import 'package:front_app/Widgets/BottomNavBarWidget.dart';
 import 'package:front_app/Widgets/CommonWidgets.dart';
 import 'package:front_app/Widgets/GlassBox.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -27,9 +28,9 @@ class _TouristPointViewState extends State<TouristPointView> {
 
   @override
   Widget build(BuildContext context) {
-    final Padding? padding;
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: const BottomNavBarWidget(),
         appBar: AppBar(
           title: Text(
             Utils.visitingPoint.toUpperCase(),
@@ -48,14 +49,8 @@ class _TouristPointViewState extends State<TouristPointView> {
             height: double.infinity,
             width: double.infinity,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color(Utils.primaryColor),
-                  Color(Utils.secondaryColor),
-                ],
-              ),
+              image: DecorationImage(
+                  image: AssetImage(Utils.bg_img), fit: BoxFit.cover),
             ),
             child: FutureBuilder<Response>(
               future: _future,
@@ -77,7 +72,10 @@ class _TouristPointViewState extends State<TouristPointView> {
                           children: [
                             GlassBox(
                               padding: Padding(
-                                padding: EdgeInsets.all(Utils.size_12),
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: Utils.size_08,
+                                  vertical: Utils.size_14,
+                                ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front_app/Utils/Utils.dart';
+import 'package:front_app/Widgets/AppBackground.dart';
+import 'package:front_app/Widgets/BottomNavBarWidget.dart';
 import 'package:front_app/Widgets/GlassBox.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,10 +17,10 @@ class CultureView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String cultureOf = Utils.welcomeMsg + cityName!;
-    final Padding? padding;
 
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: const BottomNavBarWidget(),
         appBar: AppBar(
           title: Text(
             Utils.culture.toUpperCase(),
@@ -32,24 +34,13 @@ class CultureView extends StatelessWidget {
           elevation: 0,
           backgroundColor: Color(Utils.primaryColor),
         ),
-        body: SafeArea(
-          child: Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color(Utils.primaryColor),
-                  Color(Utils.secondaryColor),
-                ],
-              ),
-            ),
+        body: AppBackground(
+          padding: Padding(
+            padding: EdgeInsets.all(Utils.size_02),
             child: SingleChildScrollView(
               child: GlassBox(
                 padding: Padding(
-                  padding: EdgeInsets.all(Utils.size_12),
+                  padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Utils.size_16),

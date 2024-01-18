@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:front_app/Service/LoginService.dart';
+import 'package:front_app/Service/AuthenticationService.dart';
 import 'package:front_app/Utils/Utils.dart';
 import 'package:front_app/Widgets/ButtonWidget.dart';
 import 'package:front_app/Widgets/CommonWidgets.dart';
 import 'package:front_app/Widgets/TextFieldWidget.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -15,10 +16,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final _userNameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final LoginService loginService = LoginService();
+  final AuthenticationService authenticationService = AuthenticationService();
 
   @override
   Widget build(BuildContext context) {
@@ -40,68 +41,51 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CommonWidgets().verticalSize(5),
-                  Image.asset(
-                    Utils.splashIcon1,
-                    width: 200,
-                    height: 200,
-                  ),
-                  CommonWidgets().verticalSize(20),
+                  CommonWidgets().verticalSize(Utils.size_06),
                   FaIcon(
                     FontAwesomeIcons.unlockKeyhole,
                     color: Color(Utils.colorWhite),
                     size: Utils.size_100,
                   ),
-                  CommonWidgets().verticalSize(30),
+                  CommonWidgets().verticalSize(Utils.size_30),
                   Text(
                     Utils.loginViewSlogan,
                     style: TextStyle(
                         fontSize: Utils.size_18,
                         color: Color(Utils.colorWhite)),
                   ),
-                  CommonWidgets().verticalSize(20),
+                  CommonWidgets().verticalSize(Utils.size_20),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFieldWidget(
-                          controller: _userNameController,
-                          hintText: Utils.userNameHintText,
+                          controller: _emailController,
+                          hintText: Utils.emailHintText,
                           obsecureText: false),
-                      CommonWidgets().verticalSize(10),
+                      CommonWidgets().verticalSize(Utils.size_10),
                       TextFieldWidget(
                           controller: _passwordController,
                           hintText: Utils.passwordHintText,
                           obsecureText: true)
                     ],
                   ),
-                  CommonWidgets().verticalSize(10),
-                  GestureDetector(
-                    onTap: () {
-                      Get.defaultDialog(
-                          title: Utils.forgotPassword,
-                          titlePadding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
-                          backgroundColor: Color(Utils.primaryColor),
-                          middleTextStyle: TextStyle(fontSize: Utils.size_16),
-                          middleText: 'I am dialogGetx');
-                    },
-                    child: Text(
-                      Utils.forgotPassword,
-                      style: TextStyle(
-                        color: Color(Utils.primaryColor),
-                        fontSize: Utils.size_18,
-                      ),
-                    ),
-                  ),
-                  CommonWidgets().verticalSize(10),
+                  CommonWidgets().verticalSize(Utils.size_10),
                   ButtonWidget(
-                    onTap: () {
-                      loginService.loginNavigation(
-                          context, _userNameController, _passwordController);
+                    onTap: () async {
+                      authenticationService.login(
+                        _emailController.text,
+                        _passwordController.text,
+                      );
+
+                      SharedPreferences sp =
+                          await SharedPreferences.getInstance();
+                      sp.setBool(Utils.KEY_LOGIN, true);
+                      sp.setString(
+                          Utils.EMAIL, _emailController.text.toString());
                     },
                     title: Utils.login,
                   ),
-                  CommonWidgets().verticalSize(25),
+                  CommonWidgets().verticalSize(Utils.size_24),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -114,7 +98,7 @@ class _LoginViewState extends State<LoginView> {
                             fontSize: Utils.size_18,
                           ),
                         ),
-                        CommonWidgets().horizontalSize(10),
+                        CommonWidgets().horizontalSize(Utils.size_10),
                         GestureDetector(
                           onTap: () {
                             Get.toNamed('/registerView');
@@ -130,7 +114,7 @@ class _LoginViewState extends State<LoginView> {
                       ],
                     ),
                   ),
-                  CommonWidgets().verticalSize(15),
+                  CommonWidgets().verticalSize(Utils.size_16),
                 ],
               ),
             ),
